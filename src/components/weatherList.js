@@ -7,19 +7,26 @@ const WeatherList = (props) => {
 	}
 
 	console.log(props.data);
-	let cityName = props.data.city.name;
-	let temperature = props.data.list[0].main.temp;
-	let description = props.data.list[0].weather[0].description;
-	let iconUrl = `http://openweathermap.org/img/w/${props.data.list[0].weather[0].icon}.png`;
+
+	const weatherDetails = props.data.map((item, index) =>{
+		return (
+			<div key={index}>
+				<h2>{item.city.name}</h2>
+				<p>{item.list[0].main.temp}</p>
+				<p>{item.list[0].weather.description}</p>
+				<img src={`http://openweathermap.org/img/w/${item.list[0].weather[0].icon}.png`} alt="weather icon" />
+				<button type="button" onClick = {()=> props.updateCityToShowDetails(item.city.name)}>Details</button>
+			</div>
+			)
+	})
+	//let cityName = props.data.city.name;
+	//let temperature = props.data.list[0].main.temp;
+	//let description = props.data.list[0].weather[0].description;
+	//let iconUrl = `http://openweathermap.org/img/w/${props.data.list[0].weather[0].icon}.png`;
 
 	return (
 		<div>
-			<h2>{cityName}</h2>
-			<ul className="col-md-4 list-group">
-				<li>{temperature}</li>
-				<li>{description}</li>
-				<li><img src={iconUrl} alt="weather icon"/></li>
-			</ul>
+			{weatherDetails}
 		</div>
 		)
 }
