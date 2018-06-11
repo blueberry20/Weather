@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import WeatherList from './components/weatherList';
 import CityWeatherDetail from './components/CityWeatherDetail';
+import icon from './weather-icon.png';
 //import './App.css';
 
 const API_KEY = "8f2ff7369e6685a359ab7782aaefbb38";
@@ -55,15 +56,20 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-      	<h1>Weather</h1>
-     	 {/*If some data was added to oneCityWeatherDetails state (details button was clicked) -  
-      		show city weather details component.
-      		If there is no data in oneCityWeatherDetails (on load and when back to all cities button is clicked) - 
-  			show a list of all cities.*/}
-      		{this.state.oneCityWeatherDetails.length === 0 ? <WeatherList data = {this.state.allCitiesWeatherData} updateCityToShowDetails = {this.updateCityToShowDetails.bind(this)}/>: null}
-      		{this.state.oneCityWeatherDetails.length !== 0 ? <CityWeatherDetail cityData = {this.state.oneCityWeatherDetails} showAllCities = {this.showAllCities.bind(this)} /> : null}
-      </div>
+		<div className="">
+			<div class="header">
+				<h1>Weather Report</h1>
+				<img src={icon} alt="cloud icon"/>
+			</div>
+			<div class="container">
+			{/*If some data was added to oneCityWeatherDetails state (details button was clicked) -  
+				show city weather details component.
+				If there is no data in oneCityWeatherDetails (on load and when back to all cities button is clicked) - 
+				show a list of all cities.*/}
+				{this.state.oneCityWeatherDetails.length === 0 ? <WeatherList data = {this.state.allCitiesWeatherData} updateCityToShowDetails = {this.updateCityToShowDetails.bind(this)}/>: null}
+				{this.state.oneCityWeatherDetails.length !== 0 ? <CityWeatherDetail cityData = {this.state.oneCityWeatherDetails} showAllCities = {this.showAllCities.bind(this)} /> : null}
+			</div>
+		</div>
     );
   }
 }
