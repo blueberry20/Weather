@@ -30,7 +30,7 @@ class App extends Component {
       	.then(data =>{ 
       		let weatherDataCopy = this.state.allCitiesWeatherData.slice();
       		weatherDataCopy.push(data);
-      		this.setState({ allCitiesWeatherData: weatherDataCopy }, ()=> {console.log(data)});
+      		this.setState({ allCitiesWeatherData: weatherDataCopy });
       	})
       	.catch(error => {console.log(error)});
 	}
@@ -40,7 +40,6 @@ class App extends Component {
 		let cityData = this.state.allCitiesWeatherData.filter(function(obj){
 			return obj.city.name === city;
 		});
-		console.log(cityData);
 		this.setState({oneCityWeatherDetails: cityData});
 	}
 
