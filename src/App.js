@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import WeatherList from './components/weatherList';
-import CityWeatherDetail from './components/cityWeatherDetail';
+import CityWeatherDetail from './components/CityWeatherDetail';
 
 const API_KEY = "8f2ff7369e6685a359ab7782aaefbb38";
 const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?units=imperial&APPID=${API_KEY}`;
