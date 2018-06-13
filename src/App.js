@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import WeatherList from './components/weatherList';
-import CityWeatherDetail from './components/CityWeatherDetail';
-import icon from './weather-icon.png';
-//import './App.css';
+import CityWeatherDetail from './components/cityWeatherDetail';
 
 const API_KEY = "8f2ff7369e6685a359ab7782aaefbb38";
 const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?units=imperial&APPID=${API_KEY}`;
@@ -25,7 +22,6 @@ class App extends Component {
 		this.fetchData("Reykjavik, IS");
 	}
 
-  
 	//get data from Weather API
 	fetchData(city){
 		const url = `${ROOT_URL}&q=${city}`;
@@ -53,15 +49,13 @@ class App extends Component {
 		this.setState({"oneCityWeatherDetails": []});
 	}
 
-
   render() {
     return (
-		<div className="">
-			<div class="header">
+		<div>
+			<div className="header">
 				<h1>Weather Report</h1>
-				<img src={icon} alt="cloud icon"/>
 			</div>
-			<div class="container">
+			<div className="container">
 			{/*If some data was added to oneCityWeatherDetails state (details button was clicked) -  
 				show city weather details component.
 				If there is no data in oneCityWeatherDetails (on load and when back to all cities button is clicked) - 
